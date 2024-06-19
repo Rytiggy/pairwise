@@ -1,24 +1,61 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { getAuth } from "firebase/auth";
+import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
-            path: '/',
-            component: () => import('../views/Home.vue')
+            name: "home",
+            path: "/",
+            component: () => import("../pages/home.vue"),
+            meta: {
+                requiresAuth: false,
+            },
         },
         {
-            path: '/register',
-            component: () => import('../views/Register.vue')
+            name: "pairwise",
+            path: "/:id",
+            component: () => import("../pages/pairwise.vue"),
+            meta: {
+                requiresAuth: false,
+            },
         },
         {
-            path: '/sign-in',
-            component: () => import('../views/SignIn.vue')
+            name: "register",
+            path: "/register",
+            component: () => import("../pages/register.vue"),
+            meta: {
+                requiresAuth: false,
+            },
         },
         {
-            path: '/feed',
-            component: () => import('../views/Feed.vue'),
-        }
-    ]
-})
+            name: "authenticate",
+            path: "/authenticate",
+            component: () => import("../pages/authenticate.vue"),
+            meta: {
+                requiresAuth: false,
+            },
+        },
 
-export default router
+        {
+            name: "manage",
+            path: "/manage",
+            component: () => import("../pages/manage.vue"),
+            meta: {
+                requiresAuth: true,
+            },
+        },
+    ],
+});
+
+router.beforeEach(async (to) => {
+    // Check if the user is logged in
+    if (to.meta.requiresAuth) {
+        const auth = getAuth();
+        const user = auth.currentUser;
+        if (!user) {
+            return { name: "authenticate" };
+        }
+    }
+});
+
+export default router;

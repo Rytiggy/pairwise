@@ -3,6 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import { initializeApp } from "firebase/app";
 import { getAuth, connectAuthEmulator } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
+import "./css/style.css"
 
 /* code from our Firebase console */
 const firebaseConfig = {
@@ -15,7 +18,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(firebaseApp);
+
 
 if (location.hostname === "localhost") {
   connectAuthEmulator(getAuth(), "http://localhost:9099");
