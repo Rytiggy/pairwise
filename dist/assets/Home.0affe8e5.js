@@ -1,0 +1,1 @@
+import{o as n,c as a}from"./index.f1b653d2.js";var _=(e,r)=>{const o=e.__vccOpts||e;for(const[t,c]of r)o[t]=c;return o};const s={};function f(e,r){return n(),a("h1",null," Home ")}var m=_(s,[["render",f]]);export{m as default};
