@@ -5,14 +5,14 @@ import { ref } from "vue";
 
 export function useQuestions() {
     const db = getFirestore();
-    const questions = ref([])
+    const questions = ref({})
 
     async function fetchQuestions() {
-        questions.value = []
+        questions.value = {}
         const querySnapshot = await getDocs(collection(db, "questions"));
         querySnapshot.forEach((doc) => {
-            console.log(doc.id, JSON.stringify(doc.data()));
-            questions.value.push(doc.data())
+            // console.log(doc.id, JSON.stringify(doc.data()));
+            questions.value[doc.id] = doc.data()
         });
     }
 

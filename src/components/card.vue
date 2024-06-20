@@ -1,6 +1,4 @@
 <script setup>
-import btn from "./btn.vue";
-
 defineProps(["title", "body"]);
 </script>
 <template>
@@ -12,7 +10,7 @@ defineProps(["title", "body"]);
       <div class="text-sm">{{ body }}</div>
     </div>
     <div class="text-dark-soft"></div>
-    <div v-if="$slots.footer" class="bg-soft text-center p-a-3">
+    <div v-if="$slots.footer" class="bg-soft p-a-3">
       <slot name="footer"></slot>
     </div>
   </div>
