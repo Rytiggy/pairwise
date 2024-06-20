@@ -16,8 +16,8 @@ export function useAnswers() {
         try {
             const docRef = await addDoc(collection(db, "answers"), {
                 questionId,
-                createdBy: user.uid,
-                name: user.name,
+                userId: user.uid,
+                userEmail: user.email,
             });
             console.log("Document written with ID: ", docRef.id);
         } catch (e) {
