@@ -19,7 +19,7 @@ function addToCompare(id) {
 }
 const compareUrl = computed(() => {
   const url = new URL(window.location.origin + "/compare");
-  url.searchParams = idsToCompare.value;
+  url.search = idsToCompare.value;
   return idsToCompare.value;
 });
 </script>

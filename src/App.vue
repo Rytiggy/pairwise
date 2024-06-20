@@ -1,11 +1,11 @@
 <template>
   <div>
-    <nav class="flex-spaced">
+    <nav class="flex-center">
       <router-link :to="{ name: 'home' }"> Home </router-link>
+
       <router-link v-if="isLoggedIn" :to="{ name: 'create' }">
         create
       </router-link>
-      <div></div>
 
       <span v-if="userProfile">
         {{ userProfile.email }}
@@ -15,7 +15,7 @@
         <router-link class="btn" :to="{ name: 'register' }">
           Register
         </router-link>
-        |
+
         <router-link :to="{ name: 'authenticate' }"> Login </router-link>
       </span>
     </nav>
