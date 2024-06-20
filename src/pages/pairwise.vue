@@ -12,10 +12,8 @@ const questionIds = route.query.q;
 const questions = ref({});
 
 onMounted(async () => {
-  console.log(questionIds);
   if (questionIds?.length === 0) console.error("no questions provided");
   questionIds.forEach(async (id, index) => {
-    console.log("id:, ", id);
     const question = await fetchQuestion(questionIds[index]);
     questions.value[id] = question;
   });

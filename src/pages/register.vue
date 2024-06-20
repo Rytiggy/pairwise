@@ -17,11 +17,9 @@ const router = useRouter(); // get a reference to our vue router
 const register = () => {
   createUserWithEmailAndPassword(getAuth(), email.value, password.value) // need .value because ref()
     .then((data) => {
-      console.log("Successfully registered!");
-      router.push("/manage"); // redirect to the feed
+      router.push({ name: "home" }); // redirect to the feed
     })
     .catch((error) => {
-      console.log(error.code);
       alert(error.message);
     });
 };

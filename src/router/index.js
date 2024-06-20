@@ -37,9 +37,9 @@ const router = createRouter({
         },
 
         {
-            name: "manage",
-            path: "/manage",
-            component: () => import("../pages/manage.vue"),
+            name: "create",
+            path: "/create",
+            component: () => import("../pages/create.vue"),
             meta: {
                 requiresAuth: true,
             },
@@ -51,6 +51,7 @@ router.beforeEach(async (to) => {
     // Check if the user is logged in
     if (to.meta.requiresAuth) {
         const auth = getAuth();
+        console.log("router.beforeEach auth", auth)
         const user = auth.currentUser;
         if (!user) {
             return { name: "authenticate" };

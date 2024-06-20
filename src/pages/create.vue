@@ -1,5 +1,5 @@
 <template>
-  <h1>Manage</h1>
+  <h1>Create</h1>
   <h3>This page is for users only and where they create the question pairs</h3>
 </template>
 

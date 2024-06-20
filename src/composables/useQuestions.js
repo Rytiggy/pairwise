@@ -11,7 +11,6 @@ export function useQuestions() {
         questions.value = {}
         const querySnapshot = await getDocs(collection(db, "questions"));
         querySnapshot.forEach((doc) => {
-            // console.log(doc.id, JSON.stringify(doc.data()));
             questions.value[doc.id] = doc.data()
         });
     }
@@ -21,10 +20,8 @@ export function useQuestions() {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
             return docSnap.data()
         } else {
-            console.log("No such document!");
             throw "Document does not exist"
         }
     }
@@ -41,7 +38,6 @@ export function useQuestions() {
                 votes: 0,
                 createdBy: user.uid
             });
-            console.log("Document written with ID: ", docRef.id);
         } catch (e) {
             console.error("Error adding document: ", e);
         }

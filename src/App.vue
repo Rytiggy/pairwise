@@ -3,9 +3,9 @@
     <nav class="flex-spaced">
       <router-link :to="{ name: 'home' }"> Home </router-link>
       <span v-if="userProfile">
-        {{ userProfile }}
+        {{ userProfile.email }}
         <div></div>
-        <router-link :to="{ name: 'manage' }"> Manage </router-link>
+        <router-link :to="{ name: 'create' }"> create </router-link>
         <button @click="handleSignOut">Logout</button>
       </span>
       <span v-else>
@@ -29,7 +29,6 @@ const userProfile = ref();
 // runs after firebase is initialized
 onAuthStateChanged(getAuth(), function (user) {
   if (user) {
-    console.log(user);
     userProfile.value = user;
     isLoggedIn.value = true; // if we have a user
   } else {

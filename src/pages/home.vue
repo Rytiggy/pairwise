@@ -13,7 +13,6 @@ async function combineVotesAndQuestions() {
     const question = questions.value[id];
 
     const votes = await fetchVotesForQuestion(id);
-    console.log({ votes });
     questionsAndAnswers.value.push({ ...question, votes });
   }
 }
