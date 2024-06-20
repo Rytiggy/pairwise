@@ -1,10 +1,10 @@
 <template>
   <div>
     <nav class="flex-center">
-      <router-link :to="{ name: 'home' }"> Home </router-link>
+      <router-link :to="{ name: 'home' }">- Home -</router-link>
 
       <router-link v-if="isLoggedIn" :to="{ name: 'create' }">
-        create
+        - create -
       </router-link>
 
       <span v-if="userProfile">
@@ -13,10 +13,10 @@
       </span>
       <span v-else>
         <router-link class="btn" :to="{ name: 'register' }">
-          Register
+          - Register -
         </router-link>
 
-        <router-link :to="{ name: 'authenticate' }"> Login </router-link>
+        <router-link :to="{ name: 'authenticate' }">- Login -</router-link>
       </span>
     </nav>
     <router-view />
