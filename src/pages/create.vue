@@ -30,10 +30,10 @@ const compareUrl = computed(() => {
   <input v-model="title" placeholder="title" />
   <input v-model="body" placeholder="body" />
   <btn @click="createQuestionPair">Create</btn>
-  <h1>build url</h1>
+  <h1>build url (select two)</h1>
   {{ compareUrl }}
   <div v-for="(question, id) in questions" @click="addToCompare(id)">
-    {{ question }}
+    {{ question.name }}
     {{ id }}
   </div>
 </template>
