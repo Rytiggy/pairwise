@@ -35,13 +35,16 @@ const router = createRouter({
                 requiresAuth: false,
             },
             beforeEnter: () => {
-                onAuthStateChanged(getAuth(), function (user) {
-                    console.log({ user })
-                    if (user.currentUser) {
-                        return { name: "home" }
-                    }
-                });
+                const auth = getAuth();
+                const user = auth.currentUser;
+                console.log("authenticate.beforeEnter", { user })
+                if (user) {
+                    return { name: "home" }
+
+                }
             }
+
+
         },
 
         {
