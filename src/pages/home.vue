@@ -2,6 +2,7 @@
 import buildUrl from "../components/buildUrl.vue";
 </script>
 <template>
-  <h1>Home</h1>
-  <buildUrl />
+  <div class="m-a-3">
+    <buildUrl />
+  </div>
 </template>

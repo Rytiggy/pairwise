@@ -51,16 +51,6 @@ function search() {
   filteredQuestions.value = objectFormat;
 }
 
-// const questionsAndAnswers = ref([]);
-// async function combineVotesAndQuestions() {
-//   for (const id in questions.value) {
-//     const question = questions.value[id];
-
-//     const votes = await fetchVotesForQuestion(id);
-//     questionsAndAnswers.value.push({ id, ...question, votes });
-//   }
-// }
-
 const idsToCompare = ref([]);
 function addToCompare(id) {
   idsToCompare.value.push(id);
@@ -74,10 +64,6 @@ const compareUrl = computed(() => {
   idsToCompare.value.forEach((id) => url.searchParams.append("q", id));
   return url;
 });
-
-function viewPairWise() {
-  router.push({ name: "compare", query: { q: idsToCompare.value } });
-}
 
 function goToPage(name) {
   router.push({ name });

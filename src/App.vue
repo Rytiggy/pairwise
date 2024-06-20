@@ -1,13 +1,13 @@
 <template>
   <div>
     <nav class="flex-center">
-      <btn @click="goToPage('home')">Home</btn>
+      <btn class="m-a-3" @click="goToPage('home')">Home</btn>
       <div v-if="userProfile">
-        <btn @click="handleSignOut">Logout</btn>
+        <btn class="m-a-3" @click="handleSignOut">Logout</btn>
       </div>
       <div v-else>
-        <btn @click="goToPage('register')">Sign up</btn>
-        <btn @click="goToPage('authenticate')">Login</btn>
+        <btn class="m-a-3" @click="goToPage('register')">Sign up</btn>
+        <btn class="m-a-3" @click="goToPage('authenticate')">Login</btn>
       </div>
     </nav>
     <router-view />
