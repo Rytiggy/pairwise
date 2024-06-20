@@ -59,8 +59,9 @@ router.beforeEach(async (to) => {
     // Check if the user is logged in
     if (to.meta.requiresAuth) {
         const auth = getAuth();
-        console.log("router.beforeEach auth", auth)
         const user = auth.currentUser;
+        console.log("router.beforeEach", { user })
+
         if (!user) {
             return { name: "authenticate" };
         }
