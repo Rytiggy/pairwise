@@ -13,7 +13,7 @@ async function combineVotesAndQuestions() {
     const question = questions.value[id];
 
     const votes = await fetchVotesForQuestion(id);
-    questionsAndAnswers.value.push({ ...question, votes });
+    questionsAndAnswers.value.push({ id, ...question, votes });
   }
 }
 onMounted(async () => {
@@ -26,10 +26,10 @@ onMounted(async () => {
   <h3>All Questions ({{ questionsAndAnswers.length }})</h3>
   <card
     class="m-a-3"
-    v-for="{ title, body, votes } in questionsAndAnswers"
+    v-for="{ title, body, votes, id } in questionsAndAnswers"
     :title
     :body
   >
-    <template #footer> Votes: {{ votes }} </template>
+    <template #footer> Votes: {{ votes }} | id: {{ id }}</template>
   </card>
 </template>

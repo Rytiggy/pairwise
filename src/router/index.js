@@ -13,7 +13,7 @@ const router = createRouter({
         },
         {
             name: "pairwise",
-            path: "/:id",
+            path: "/compare",
             component: () => import("../pages/pairwise.vue"),
             meta: {
                 requiresAuth: false,

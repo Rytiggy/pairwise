@@ -15,8 +15,10 @@ export function useVotes() {
         const auth = getAuth();
         let user = auth.currentUser;
         if (!user) {
-            user.userId = "Anonymous"
-            user.email = "Anonymous"
+            user = {
+                userId: "Anonymous",
+                email: "Anonymous"
+            }
         }
         try {
             await addDoc(collection(db, "votes"), {

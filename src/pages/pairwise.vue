@@ -12,21 +12,32 @@ const questionIds = route.query.q;
 const questions = ref({});
 
 onMounted(async () => {
-  if (questionIds?.length === 0) console.error("no questions provided");
-  questionIds.forEach(async (id, index) => {
-    const question = await fetchQuestion(questionIds[index]);
-    questions.value[id] = question;
-  });
+  if (questionIds?.length > 0)
+    questionIds.forEach(async (id, index) => {
+      const question = await fetchQuestion(questionIds[index]);
+      questions.value[id] = question;
+    });
+  else alert("No questions provided to compare");
 });
 
+const hasVoted = ref(false);
+
 async function selectQuestion(id) {
-  createVote(id);
+  await createVote(id);
+  hasVoted.value = true;
 }
 </script>
 
 <template>
   <div class="row">
-    <card class="m-a-3" v-for="({ title, body }, id) in questions" :title :body>
+    <card v-if="hasVoted" title="Thank you"></card>
+    <card
+      v-else
+      class="m-a-3"
+      v-for="({ title, body }, id) in questions"
+      :title
+      :body
+    >
       <template #footer>
         <btn @click="selectQuestion(id)">Choose</btn>
       </template>
