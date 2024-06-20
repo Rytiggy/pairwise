@@ -1,9 +1,7 @@
-<template>
-  <h1>Create</h1>
-  <h3>This page is for users only and where they create the question pairs</h3>
-</template>
-
 <script setup>
+import { ref } from "vue";
+import btn from "../components/btn.vue";
+
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 // import { useRouter } from "vue-router";
 // import { onBeforeUnmount } from "vue";
@@ -20,4 +18,18 @@
 //   // clear up listener
 //   authListener();
 // });
+
+const title = ref("");
+const body = ref("");
+
+function createQuestionPair() {
+  console.log({ title, body });
+}
 </script>
+
+<template>
+  <h1>Create</h1>
+  <input v-model="title" />
+  <input v-model="body" />
+  <btn @click="createQuestion">Create</btn>
+</template>
