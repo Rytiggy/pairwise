@@ -1,11 +1,11 @@
 <template>
   <div>
-    <nav>
-      <router-link :to="{ name: 'home' }"> Home </router-link> |
-      <span>
-        <router-link :to="{ name: 'manage' }"> Manage </router-link> |
-      </span>
-      <span v-if="isLoggedIn">
+    <nav class="flex-spaced">
+      <router-link :to="{ name: 'home' }"> Home </router-link>
+      <span v-if="userProfile">
+        {{ userProfile }}
+        <div></div>
+        <router-link :to="{ name: 'manage' }"> Manage </router-link>
         <button @click="handleSignOut">Logout</button>
       </span>
       <span v-else>
@@ -18,17 +18,19 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from "vue"; // used for conditional rendering
+import { ref } from "vue"; // used for conditional rendering
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 
 const isLoggedIn = ref(true);
-
+const userProfile = ref();
 // runs after firebase is initialized
 onAuthStateChanged(getAuth(), function (user) {
   if (user) {
+    console.log(user);
+    userProfile.value = user;
     isLoggedIn.value = true; // if we have a user
   } else {
     isLoggedIn.value = false; // if we do not

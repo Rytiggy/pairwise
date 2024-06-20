@@ -12,9 +12,8 @@ defineProps(["title", "body"]);
       <div class="text-sm">{{ body }}</div>
     </div>
     <div class="text-dark-soft"></div>
-    <div class="bg-soft text-center p-a-3">
-      <btn class="">Choose</btn>
-      <!-- <div class="p-y-3 text-sm text-dark-soft">By {{ author }}</div> -->
+    <div v-if="$slots.footer" class="bg-soft text-center p-a-3">
+      <slot name="footer"></slot>
     </div>
   </div>
 </template>
