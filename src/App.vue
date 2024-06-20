@@ -1,23 +1,14 @@
 <template>
   <div>
     <nav class="flex-center">
-      <router-link :to="{ name: 'home' }">- Home -</router-link>
-
-      <router-link v-if="isLoggedIn" :to="{ name: 'create' }">
-        - create -
-      </router-link>
-
-      <span v-if="userProfile">
-        {{ userProfile.email }}
-        <Btn @click="handleSignOut">Logout</Btn>
-      </span>
-      <span v-else>
-        <router-link class="btn" :to="{ name: 'register' }">
-          - Register -
-        </router-link>
-
-        <router-link :to="{ name: 'authenticate' }">- Login -</router-link>
-      </span>
+      <btn @click="goToPage('home')">Home</btn>
+      <div v-if="userProfile">
+        <btn @click="handleSignOut">Logout</btn>
+      </div>
+      <div v-else>
+        <btn @click="goToPage('register')">Sign up</btn>
+        <btn @click="goToPage('authenticate')">Login</btn>
+      </div>
     </nav>
     <router-view />
   </div>
@@ -27,7 +18,7 @@
 import { ref } from "vue"; // used for conditional rendering
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
-import Btn from "./components/btn.vue";
+import btn from "./components/btn.vue";
 
 const router = useRouter();
 
@@ -43,6 +34,9 @@ onAuthStateChanged(getAuth(), function (user) {
   }
 });
 
+function goToPage(name) {
+  router.push({ name });
+}
 const handleSignOut = () => {
   signOut(getAuth());
   router.push("/");
