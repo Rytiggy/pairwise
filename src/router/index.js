@@ -1,4 +1,4 @@
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
     history: createWebHistory(),
@@ -34,6 +34,14 @@ const router = createRouter({
             meta: {
                 requiresAuth: false,
             },
+            beforeEnter: (to) => {
+                onAuthStateChanged(getAuth(), function (user) {
+                    console.log({ user })
+                    if (user) {
+                        return { name: "home" }
+                    }
+                });
+            }
         },
 
         {
