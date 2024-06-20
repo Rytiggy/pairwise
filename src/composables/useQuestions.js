@@ -35,7 +35,7 @@ export function useQuestions() {
             await addDoc(collection(db, "questions"), {
                 title,
                 body,
-                createdBy: user.uid
+                userId: user.uid
             });
         } catch (e) {
             console.error("Error adding document: ", e);
