@@ -19,8 +19,8 @@ function addToCompare(id) {
 }
 const compareUrl = computed(() => {
   const url = new URL(window.location.origin + "/compare");
-  url.search = idsToCompare.value;
-  return url.href;
+  idsToCompare.value.forEach((id) => url.searchParams.append("q", id));
+  return url;
 });
 </script>
 
