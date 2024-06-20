@@ -6,8 +6,8 @@ const title = ref("");
 const body = ref("");
 const { createQuestion } = useQuestions();
 function createQuestionPair() {
-  console.log({ title, body });
-  createQuestion(title, body);
+  console.log({ title: title.value, body: body.value });
+  createQuestion(title.value, body.value);
 }
 </script>
 

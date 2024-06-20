@@ -1,5 +1,5 @@
 import { getAuth } from "firebase/auth";
-import { collection, getDocs, addDoc, query, where, getFirestore, doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, getFirestore, doc, getDoc } from "firebase/firestore";
 
 import { ref } from "vue";
 
@@ -32,10 +32,9 @@ export function useQuestions() {
         if (!user)
             alert("you need to login")
         try {
-            const docRef = await addDoc(collection(db, "questions"), {
+            await addDoc(collection(db, "questions"), {
                 title,
                 body,
-                votes: 0,
                 createdBy: user.uid
             });
         } catch (e) {
