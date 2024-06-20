@@ -13,13 +13,13 @@ export function useVotes() {
 
     async function createVote(questionId) {
         const auth = getAuth();
-        const user = auth.currentUser;
+        let user = auth.currentUser;
         if (!user) {
-            alert("you need to login");
-            throw "Unauthenticated";
+            user.userId = "Anonymous"
+            user.email = "Anonymous"
         }
         try {
-            const docRef = await addDoc(collection(db, "votes"), {
+            await addDoc(collection(db, "votes"), {
                 questionId,
                 userId: user.uid,
                 userEmail: user.email,
