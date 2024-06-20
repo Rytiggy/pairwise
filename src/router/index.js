@@ -34,19 +34,7 @@ const router = createRouter({
             meta: {
                 requiresAuth: false,
             },
-            beforeEnter: () => {
-                const auth = getAuth();
-                const user = auth.currentUser;
-                console.log("authenticate.beforeEnter", { user })
-                if (user) {
-                    return { name: "home" }
-
-                }
-            }
-
-
         },
-
         {
             name: "create",
             path: "/create",
