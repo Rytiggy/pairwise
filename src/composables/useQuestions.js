@@ -29,8 +29,10 @@ export function useQuestions() {
     async function createQuestion(title, body) {
         const auth = getAuth();
         const user = auth.currentUser;
-        if (!user)
+        if (!user) {
             alert("you need to login")
+            throw "unauthenticated"
+        }
         try {
             await addDoc(collection(db, "questions"), {
                 title,

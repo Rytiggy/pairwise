@@ -1,11 +1,16 @@
 <script setup>
-defineProps(["title", "body"]);
+defineProps(["title", "body", "showTopBorder"]);
 </script>
 <template>
   <div
-    class="crop bg-light border-t border-brand border-thick border-rounded-lg box-shadow"
+    :class="[
+      'crop bg-light border-brand border-thick border-rounded-lg box-shadow',
+      showTopBorder ? 'border-t' : '',
+    ]"
   >
     <div class="p-x-4 p-y-3 border-b">
+      <slot></slot>
+
       {{ title }}
       <div class="text-sm">{{ body }}</div>
     </div>

@@ -75,6 +75,9 @@ body {
 .m-b-4 {
   margin-bottom: 1rem;
 }
+.m-t-2 {
+  margin-top: 0.5rem;
+}
 .m-r-2 {
   margin-right: 0.5rem;
 }
@@ -102,6 +105,9 @@ body {
 }
 .text-xl {
   font-size: 1.375rem;
+}
+.text-lg {
+  font-size: 1.175rem;
 }
 .text-base {
   font-size: 1rem;
@@ -174,4 +180,23 @@ body {
 
 .full-width {
   width: 100%;
+}
+
+code {
+  background-color: #272822;
+  color: #f8f8f2;
+  border-radius: 0.3rem;
+  padding: 4px 5px 5px;
+  white-space: nowrap;
+}
+
+pre code {
+  white-space: inherit;
+}
+
+pre {
+  background-color: #272822;
+  color: #f8f8f2;
+  padding: 5px;
+  border-radius: 0.3em;
 }

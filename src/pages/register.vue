@@ -1,7 +1,7 @@
 <template>
   <h1>Create an Account</h1>
-  <p><input type="text" placeholder="Email" v-model="email" /></p>
-  <p><input type="password" placeholder="Password" v-model="password" /></p>
+  <p><inputEle type="text" placeholder="Email" v-model="email" /></p>
+  <p><inputEle type="password" placeholder="Password" v-model="password" /></p>
   <p><button @click="register">Submit</button></p>
 </template>
 
@@ -9,6 +9,7 @@
 import { ref } from "vue";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "vue-router"; // import router
+import inputEle from "../components/inputEle.vue";
 
 const email = ref("");
 const password = ref("");

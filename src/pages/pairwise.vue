@@ -6,7 +6,7 @@ import btn from "../components/btn.vue";
 import { useQuestions } from "../composables/useQuestions.js";
 import { useVotes } from "../composables/useVotes.js";
 const { fetchQuestion } = useQuestions();
-const { createVote } = useVotes();
+const { createVote, fetchVotesForQuestion } = useVotes();
 const route = useRoute();
 const questionIds = route.query.q;
 const questions = ref({});
@@ -15,7 +15,9 @@ onMounted(async () => {
   if (questionIds?.length > 0)
     questionIds.forEach(async (id, index) => {
       const question = await fetchQuestion(questionIds[index]);
-      questions.value[id] = question;
+      const votes = await fetchVotesForQuestion(id);
+
+      questions.value[id] = { ...question, votes };
     });
   else alert("No questions provided to compare");
 });
@@ -34,10 +36,12 @@ async function selectQuestion(id) {
     <card
       v-else
       class="m-a-3"
-      v-for="({ title, body }, id) in questions"
+      v-for="({ title, body, votes }, id) in questions"
       :title
       :body
     >
+      <div class="text-xs">{{ votes }} votes</div>
+
       <template #footer>
         <btn @click="selectQuestion(id)">Choose</btn>
       </template>
