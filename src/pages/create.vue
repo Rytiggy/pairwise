@@ -6,7 +6,7 @@ const title = ref("");
 const body = ref("");
 
 const { fetchQuestions, createQuestion, questions } = useQuestions();
-await fetchQuestions();
+fetchQuestions();
 
 function createQuestionPair() {
   console.log({ title: title.value, body: body.value });
@@ -32,7 +32,6 @@ const compareUrl = computed(() => {
   <btn @click="createQuestionPair">Create</btn>
   <h1>build url</h1>
   {{ compareUrl }}
-
   <div v-for="(question, id) in questions" @click="addToCompare(id)">
     {{ question }}
     {{ id }}
