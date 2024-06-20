@@ -34,10 +34,10 @@ const router = createRouter({
             meta: {
                 requiresAuth: false,
             },
-            beforeEnter: (to) => {
+            beforeEnter: () => {
                 onAuthStateChanged(getAuth(), function (user) {
                     console.log({ user })
-                    if (user) {
+                    if (user.currentUser) {
                         return { name: "home" }
                     }
                 });

@@ -2,14 +2,20 @@
   <div>
     <nav class="flex-spaced">
       <router-link :to="{ name: 'home' }"> Home </router-link>
+      <router-link v-if="isLoggedIn" :to="{ name: 'create' }">
+        create
+      </router-link>
+      <div></div>
+
       <span v-if="userProfile">
         {{ userProfile.email }}
-        <div></div>
-        <router-link :to="{ name: 'create' }"> create </router-link>
-        <button @click="handleSignOut">Logout</button>
+        <Btn @click="handleSignOut">Logout</Btn>
       </span>
       <span v-else>
-        <router-link :to="{ name: 'register' }"> Register </router-link> |
+        <router-link class="btn" :to="{ name: 'register' }">
+          Register
+        </router-link>
+        |
         <router-link :to="{ name: 'authenticate' }"> Login </router-link>
       </span>
     </nav>
@@ -21,6 +27,7 @@
 import { ref } from "vue"; // used for conditional rendering
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
+import Btn from "./components/btn.vue";
 
 const router = useRouter();
 
