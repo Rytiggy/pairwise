@@ -18,7 +18,7 @@ export function useRankings() {
         rankings.value = []
         const querySnapshot = await getDocs(collection(db, "rankings"));
         querySnapshot.forEach((doc) => {
-            rankings.value.push(doc.data());
+            rankings.value.push({ ...doc.data(), id: doc.id });
         });
     }
 

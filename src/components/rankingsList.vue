@@ -15,9 +15,10 @@ function view(id) {
   <div class="grid">
     <card v-for="item in items">
       <div class="text-xl">{{ item.name }}</div>
-      <div class="text-xs">{{ item.items.length }} Items</div>
+      <div class="text-xs">{{ item?.items?.length }} Items</div>
 
       <template #footer>
+        {{ item.id }}
         <btn @click="edit(item.id)">Edit</btn>
         <btn @click="view(item.id)">Rank</btn>
       </template>
