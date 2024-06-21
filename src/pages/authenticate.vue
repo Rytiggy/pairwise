@@ -1,9 +1,15 @@
 <template>
-  <h1>Login to Your Account</h1>
-  <p><inputEle type="text" placeholder="Email" v-model="email" /></p>
-  <p><inputEle type="password" placeholder="Password" v-model="password" /></p>
-  <p v-if="errMsg">{{ errMsg }}</p>
-  <p><button @click="signIn">Submit</button></p>
+  <div class="flex-center">
+    <div>
+      <h1>Login to Your Account</h1>
+      <p><inputEle type="text" placeholder="Email" v-model="email" /></p>
+      <p>
+        <inputEle type="password" placeholder="Password" v-model="password" />
+      </p>
+      <p v-if="errMsg">{{ errMsg }}</p>
+      <p><button @click="signIn">Submit</button></p>
+    </div>
+  </div>
 </template>
 
 <script setup>

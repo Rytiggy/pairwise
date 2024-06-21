@@ -49,18 +49,20 @@ export function useRankings() {
     }
 
     async function createRanking() {
-        const auth = getAuth();
-        const user = auth.currentUser;
-        if (!user) {
-            alert("you need to login")
-            throw "unauthenticated"
-        }
+        // const auth = getAuth();
+        // const user = auth.currentUser;
+        // if (!user) {
+        //     alert("you need to login")
+        //     throw "unauthenticated"
+        // }
         try {
-            await addDoc(collection(db, "ranking"), {
+            const doc = await addDoc(collection(db, "rankings"), {
                 name: "New Ranking",
-                userId: user.uid,
+                userId: "test",
                 items: []
             });
+            console.log("Document written with ID: ", doc.id);
+            return doc
         } catch (e) {
             console.error("Error adding document: ", e);
         }

@@ -8,7 +8,7 @@ const router = createRouter({
             path: "/",
             component: () => import("../pages/home.vue"),
             meta: {
-                requiresAuth: false, // todo
+                requiresAuth: true,
             },
         },
         // {
@@ -33,7 +33,7 @@ const router = createRouter({
             path: "/rankings/:id",
             component: () => import("../pages/ranking.vue"),
             meta: {
-                requiresAuth: false,// todo
+                requiresAuth: false,
             },
         },
         {
@@ -41,7 +41,7 @@ const router = createRouter({
             path: "/rankings/:id/edit",
             component: () => import("../pages/editRanking.vue"),
             meta: {
-                requiresAuth: false,// todo
+                requiresAuth: true,
             },
         },
         {

@@ -1,8 +1,14 @@
 <template>
-  <h1>Create an Account</h1>
-  <p><inputEle type="text" placeholder="Email" v-model="email" /></p>
-  <p><inputEle type="password" placeholder="Password" v-model="password" /></p>
-  <p><button @click="register">Submit</button></p>
+  <div class="flex-center">
+    <div>
+      <h1>Create an Account</h1>
+      <p><inputEle type="text" placeholder="Email" v-model="email" /></p>
+      <p>
+        <inputEle type="password" placeholder="Password" v-model="password" />
+      </p>
+      <p><button @click="register">Submit</button></p>
+    </div>
+  </div>
 </template>
 
 <script setup>

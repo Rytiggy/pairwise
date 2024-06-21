@@ -1,8 +1,8 @@
 <template>
   <div>
     <nav class="flex-center">
-      <btn class="m-a-3" @click="goToPage('home')">Home</btn>
       <div v-if="userProfile">
+        <btn class="m-a-3" @click="goToPage('home')">Home</btn>
         <btn class="m-a-3" @click="handleSignOut">Logout</btn>
       </div>
       <div v-else>
