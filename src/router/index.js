@@ -8,15 +8,40 @@ const router = createRouter({
             path: "/",
             component: () => import("../pages/home.vue"),
             meta: {
-                requiresAuth: false,
+                requiresAuth: false, // todo
+            },
+        },
+        // {
+        //     name: "pairwise",
+        //     path: "/compare",
+        //     component: () => import("../pages/pairwise.vue"),
+        //     meta: {
+        //         requiresAuth: false,
+        //     },
+        // },
+
+        // {
+        //     name: "create",
+        //     path: "/create",
+        //     component: () => import("../pages/create.vue"),
+        //     meta: {
+        //         requiresAuth: true,
+        //     },
+        // },
+        {
+            name: "ranking",
+            path: "/rankings/:id",
+            component: () => import("../pages/ranking.vue"),
+            meta: {
+                requiresAuth: false,// todo
             },
         },
         {
-            name: "pairwise",
-            path: "/compare",
-            component: () => import("../pages/pairwise.vue"),
+            name: "editRanking",
+            path: "/rankings/:id/edit",
+            component: () => import("../pages/editRanking.vue"),
             meta: {
-                requiresAuth: false,
+                requiresAuth: false,// todo
             },
         },
         {
@@ -33,14 +58,6 @@ const router = createRouter({
             component: () => import("../pages/authenticate.vue"),
             meta: {
                 requiresAuth: false,
-            },
-        },
-        {
-            name: "create",
-            path: "/create",
-            component: () => import("../pages/create.vue"),
-            meta: {
-                requiresAuth: true,
             },
         },
     ],
