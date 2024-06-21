@@ -39,7 +39,7 @@ function goToPage(name) {
 }
 const handleSignOut = () => {
   signOut(getAuth());
-  router.push("/");
+  router.push({ name: "authenticate" });
 };
 </script>
 

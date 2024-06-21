@@ -11,23 +11,6 @@ const router = createRouter({
                 requiresAuth: true,
             },
         },
-        // {
-        //     name: "pairwise",
-        //     path: "/compare",
-        //     component: () => import("../pages/pairwise.vue"),
-        //     meta: {
-        //         requiresAuth: false,
-        //     },
-        // },
-
-        // {
-        //     name: "create",
-        //     path: "/create",
-        //     component: () => import("../pages/create.vue"),
-        //     meta: {
-        //         requiresAuth: true,
-        //     },
-        // },
         {
             name: "ranking",
             path: "/rankings/:id",
